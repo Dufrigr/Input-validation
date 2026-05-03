@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="info">
+        <h1>Submit Your Information</h1>
+        <form id="registration" onsubmit="return check_to_submit()">
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email" required>
+            
+            <label for="phone">Phone Number:</label>
+            <input type="text" id="phone" name="phone" required>
+            
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        function check_to_submit() {
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+
+            
+            const emailRegex = /^[a-zA-Z0-9][a-zA-Z0-9_]{1,}[a-zA-Z0-9_]{1,}@[a-zA-Z0-9-]{3,}\.[a-zA-Z]{3}$/;
+            
+            const phoneRegex = /^\d{3}-\d{7}$/;
+
+            if (emailRegex.test(email) && phoneRegex.test(phone)) {
+                return true;             } else {
+                alert("Information invalid: Try again");
+                return false; 
+            }
+        }
+    </script>
+</body>
+</html>
